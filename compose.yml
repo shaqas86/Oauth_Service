@@ -1,0 +1,18 @@
+name: "online_aut_class"
+
+services:
+  auth_api_service:
+    image: "auth_api_image"
+    build: 
+      context: ./auth_service 
+      dockerfile: dockerfile
+    ports:
+      - "8020:8020"
+    volumes:
+      - ./auth_service:/code
+    
+    networks:
+      - auth_network
+  
+networks:
+  auth_network:
